@@ -3,6 +3,7 @@ import openai
 # Set your OpenAI API key
 openai.api_key = "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"
 
+# questions to answer
 question_list = [
     # message 1
     "@NJTRANSIT_MBPJ @NJTRANSIT @aew1776 @FuckNjTransit "
@@ -17,6 +18,7 @@ question_list = [
     "bus out of service. engine off, lights out. not allowed to disembark as still on the highway, approaching the bronx, near lafayette avenue. bus driver already called for assistance, waiting quietly and patiently for the next bus https: and and t.co and 6sxouvhg1v"
 ]
 
+# few shot learning examples (2 negative, 1 positive, 1 irrelevant)
 messages = [
     {"role": "system", "content": "Assistant is an intelligent chatbot that based on a twitter post, finds the travel mode, people's sentiment, as well as the reason behind if the sentiment is negative."},
     {"role": "user", "content": "I've been waiting a long time for the subway. I have been waiting for half an hour already there is no subway coming."},
@@ -37,6 +39,7 @@ messages = [
 reply = ''
 reply_list = []
 
+# read 1 question at a time, and append responses to a list
 for question in question_list:
     if reply != '':
         messages.append(reply)
